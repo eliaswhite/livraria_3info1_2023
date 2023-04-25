@@ -7,6 +7,7 @@ from livraria.serializers import (
     EditoraSerializer,
     LivroSerializer,
     LivroDetailSerializer,
+    LivroListSerializer
 )
 
 
@@ -27,9 +28,20 @@ class EditoraViewSet(ModelViewSet):
 
 class LivroViewSet(ModelViewSet):
     queryset = Livro.objects.all()
-    # serializer_class = LivroSerializer
+
+    # def get_serializer_class(self):
+    #     if self.action == "list":
+    #         return LivroListSerializer
+    #     elif self.action == "retrieve":
+    #         return LivroDetailSerializer
+    #     return LivroSerializer
+    
+    serializer_classes = {
+        "list": LivroListSerializer,
+        "retrieve": LivroDetailSerializer,
+    }
 
     def get_serializer_class(self):
-        if self.action in ["list", "retrieve"]:
-            return LivroDetailSerializer
-        return LivroSerializer
+        return self.serializer_classes.get(self.action, LivroSerializer)
+
+
