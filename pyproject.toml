@@ -11,13 +11,9 @@ name = ""
 version = ""
 description = ""
 authors = [
-    {name = "Marco André Mendes", email = "marcoandre@gmail.com"},
+    {name = "Elias", email = "souzabrancoelias8@mail.com"},
 ]
-dependencies = [
-    "django>=4.1.7",
-    "djangorestframework>=3.14.0",
-    "django-cors-headers>=4.0.0",
-]
+dependencies = []
 requires-python = ">=3.10"
 license = {text = "MIT"}
 
